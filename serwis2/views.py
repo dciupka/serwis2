@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 import requests
 import json
-from .forms import Size
+from .forms import Size, SecondEndpointForms
 from .models import Geoinfo
 
 
@@ -35,9 +35,10 @@ def index(request):
                             print(f"{dictionary_data['_id']}- jest już na liscie")
                     break
                 return redirect('api/json/all')
-            else:
-                form = Size()
-            return render(request, 'serwis2/index.html', {'form': form})
+
+        else:
+            form = Size()
+            return render(request, 'serwis2/index.html', {'form': form,'form_2':form_2})
 
     return render(request, 'serwis2/index.html', {'form': 'form'})
 

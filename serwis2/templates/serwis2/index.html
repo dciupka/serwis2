@@ -10,14 +10,14 @@
 <h1>Serwis 2</h1>
 
 <p>Podaj rozmiar listy:</p>
-  <form action="{% url 'serwis2:index' %}" method="post">
-        {% csrf_token%}
-        {{form.as_p}}
-        <button class="btn btn-secondary" name="submit" > Pobierz dane </button>
+<form action="{% url 'serwis2:index' %}" method="post">
+    {% csrf_token%}
+    {{form.as_p}}
+    <button class="btn btn-secondary" name="submit"> Pobierz dane</button>
+    <br>
+    <br>
 
-  </form>
-<br>
-<br>
+</form>
 
 
 </body>
