@@ -89,79 +89,7 @@ def endpoint(request):
                 print_lista.clear()
             response['Content-Disposition'] = 'attachment; filename="name.csv"'
             return response
-
-
-
     else:
         form = SecondEndpointForms()
     context = {'response': 'response', 'form':form}
     return render(request, 'serwis2/endpoint.html', context)
-
-
-
-'''
-
-def endpoint(request):
-    if request.method == "POST":
-        form = SecondEndpointForms(request.POST)
-        if form.is_valid():
-            id = form.cleaned_data['_id']
-            lat= form.cleaned_data['latitude']
-            lon= form.cleaned_data['longitude']
-            print(f'{id}, {lon} xxxxx {lat}')
-            data = Geoinfo.objects.all()
-            print("___________________")
-            for item in data:
-                if item._id ==id and item.latitude==lat and item.longitude==lon:
-                    obj = Geoinfo.objects.filter(_id = id)
-                    context ={'obj':obj}
-                    response = HttpResponse(content_type='text/csv')
-                    lista = []
-                    for ob in obj:
-                        lista.append(ob._id)
-                        lista.append(ob.latitude)
-                        lista.append(ob.longitude)
-
-                    print(lista)
-                    writer = csv.writer(response)
-                    writer.writerow(['id', 'latitude', 'longtitude'])
-                    writer.writerow(lista)
-                    response['Content-Disposition'] = 'attachment; filename="name.csv"'
-                    return response
-
-    else:
-        form = SecondEndpointForms()
-    context = {'response': 'response', 'form':form}
-    return render(request, 'serwis2/endpoint.html', context)
-def some_view(request):
-    # Create the HttpResponse object with the appropriate CSV header.
-    response = HttpResponse(content_type='text/csv')
-    lista = []
-    writer = csv.writer(response)
-    writer.writerow(['id','latitude','longtitude'])
-    writer.writerow(['Second row', 'A', 'B', 'C', '"Testing"', "Here's a quote"])
-    response['Content-Disposition']= 'attachment; filename="somefilename.csv"'
-    return response
-
-
-
-def endpoint(request):
-    if request.method == "POST":
-        form = SecondEndpointForms(request.POST)
-        if form.is_valid():
-            id = form.cleaned_data['_id']
-            lat= form.cleaned_data['latitude']
-            lon= form.cleaned_data['longitude']
-            print(f'{id}, {lon} xxxxx {lat}')
-            data = Geoinfo.objects.all()
-            print("___________________")
-            for item in data:
-                if item._id ==id and item.latitude==lat and item.longitude==lon:
-                    obj = Geoinfo.objects.filter(_id = id)
-                    print(obj)
-
-    else:
-        form = SecondEndpointForms()
-    context = {'response': 'response', 'form':form}
-    return render(request, 'serwis2/endpoint.html', context)
-'''
