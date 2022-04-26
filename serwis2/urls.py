@@ -6,5 +6,4 @@ app_name = 'serwis2'
 urlpatterns = [
     path('', views.index, name='index'),
     path('endpoint/', views.endpoint, name='endpoint'),
-
 ]

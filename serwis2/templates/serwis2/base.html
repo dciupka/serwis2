@@ -1,0 +1,36 @@
+{% load static %}
+{% load django_bootstrap5 %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% bootstrap_css %}
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+
+        <ul class="nav nav-tabs m-3">
+            <li class="nav-item p-3">
+                <a class="btn btn-outline-secondary" href="{% url 'serwis2:index' %}" role="button">Pierwszy
+                    Endpoint</a>
+            </li>
+             <li class="nav-item p-3">
+                <a class="btn btn-outline-secondary" href="{% url 'serwis2:endpoint' %}" role="button">Drugi
+                    Endpoint</a>
+            </li>
+        </ul>
+    </nav>
+
+
+</header>
+<div class="main">
+
+    {% block content %}
+    {% endblock content %}
+</div>
+</body>
+</html>

@@ -1,24 +1,21 @@
-{% load static %}
+{% extends "serwis2/base.html" %}
+{% block content %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Serwis2</title>
-</head>
-<body>
-<h1>Serwis 2</h1>
+<p>Pobierz dane</p>
 
-<p>Podaj rozmiar listy:</p>
+
 <form action="{% url 'serwis2:index' %}" method="post">
     {% csrf_token%}
     {{form.as_p}}
-    <button class="btn btn-secondary" name="submit"> Pobierz dane</button>
-    <br>
-    <br>
-
+    <button class="btn btn-secondary" name="submit" value="Submit"> Pobierz dane CSV</button>
 </form>
 
-
-</body>
-</html>
+<br>
+<br>
+<p>
+    2. Serwis który pobiera dane z pierwszego i konwertuje go do csv. Pierwszy endpoint który zawsze
+    zwraca pobrane dane w formacie ‘type, _id, name, type, latitude, longitude’. Drugi endpoint który
+    zwraca pobrane dane w danej strukturze csv czyli podajemy w zapytaniu ‘ id, latitude, longitude’ i
+    oczekujemy że zwróci taki wynik ‘65483214, 51.0855422, 16.9987442’
+</p>
+{% endblock content %}

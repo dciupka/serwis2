@@ -1,9 +1,9 @@
 from django import forms
+from .models import Geoinfo
 
 class Size(forms.Form):
     ok = forms.CheckboxInput()
 
-
 class SecondEndpointForms(forms.Form):
-    id = forms.IntegerField
+    zapytanie = forms.CharField(max_length=200)
 

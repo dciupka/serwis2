@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-first endpoint
-</body>
-</html>
+{% extends "serwis2/base.html" %}
+
+{% block content %}
+
+<form action="{% url 'serwis2:endpoint' %}" method="post">
+    {% csrf_token%}
+    {{form.as_p}}
+    <button class="btn btn-secondary" name="submit"> Pobierz CSV </button>
+</form>
+<br>
+<br>
+
+<p>
+    Drugi endpoint który
+zwraca pobrane dane w danej strukturze csv czyli podajemy w zapytaniu ‘ id, latitude, longitude’ i
+oczekujemy że zwróci taki wynik ‘65483214, 51.0855422, 16.9987442’
+</p>
+
+{% endblock content %}
